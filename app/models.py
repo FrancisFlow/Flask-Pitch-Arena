@@ -42,9 +42,9 @@ class Comment(db.Model):
     comment = db.Column(db.String(), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
-    def save_comment(self):
-        db.session.add(self)
-        db.session.commit()
+    # def save_comment(self):
+    #     db.session.add(self)
+    #     db.session.commit()
 
     @classmethod
     def get_comments(cls,pitch_id):
@@ -74,9 +74,10 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path=db.Column(db.String())
     pass_secure= db.Column(db.String(255))
-    pitch= db.relationship('Pitches', backref='user', lazy='dynamic')
-    upvotes = db.relationship('Upvote', backref = 'user', lazy = 'dynamic')
-    downvotes = db.relationship('Downvote', backref = 'user', lazy = 'dynamic')
+    comment = db.relationship('Comment', backref = 'users', lazy = 'dynamic')
+    pitch= db.relationship('Pitches', backref='users', lazy='dynamic')
+    upvotes = db.relationship('Upvote', backref = 'users', lazy = 'dynamic')
+    downvotes = db.relationship('Downvote', backref = 'users', lazy = 'dynamic')
 
     @property
 

@@ -87,5 +87,29 @@ def categories():
 
     return render_template('categories.html', title=title, pitch =pitch, Business = Business, Pick_up_lines=Pick_up_lines, Self_Pitch=Self_Pitch, Sales_Pitch=Sales_Pitch, upvotes=upvotes, downvotes=downvotes)
 
+@main.route('/pitch/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])
+def upvote(pitch_id):
+    pitch = Pitches.query.get(pitch_id)
+    user = current_user
+    pitch_upvotes = Upvote.query.filter_by(pitch_id = pitch_id)
+
+    if Upvote.query.filter_by(Upvote.user_id==user.id, Upvote.pitch_id==pitch_id).first():
+        return redirect(url_for('main.categories'))
+
+    new_upvote = Upvote(pitch_id = pitch_id, user =current_user)
+    new_upvote.save_upvotes()
+    return redirect(url_for('main.categories'))
 
 
+@main.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
+def downvote(pitch_id):
+    pitch= Pitches.query.get(pitch_id)
+    user = current_user
+    pitch_downvotes = Downvote.query.filter_by(pitch_id=pitch_id)
+
+    if Downvote.query.filter(Downvote.user_id == user.id, Downvote.pitch_id == pitch_id).first():
+        return redirect(url_for('main.categories'))
+
+    new_downvote = Downvote(pitch_id=pitch_id, user = current_user)
+    new_downvote.save_downvotes()
+    return redirect(url_for('main.categories'))

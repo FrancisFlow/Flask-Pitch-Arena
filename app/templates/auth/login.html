@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block styles %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container text-center">
+  
+    <div class="row">
+        <h3 class='text-center'> SIGN IN
+        </h3>
+
+        <div class="col-md-9">
+    
+            <!--Flash message -->
+           {% for message in get_flashed_messages() %}
+           <div class="alert alert-danger">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           {{ message }}
+           </div>
+           {% endfor %}
+           <!-- Login form -->
+           {{wtf.quick_form(login_form)}}
+
+       </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

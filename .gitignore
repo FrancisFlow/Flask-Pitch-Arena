@@ -1,3 +1,15 @@
 virtual/
 *.pyc
 start.sh
+instance/
+.vscode/
+
+
+#  commit their local changes
+# - switch to homepage branch
+# - pull the changes to their local home page branch
+# git pull origin branch name
+# Francis Kipchumba6:42 PM
+# - switch back to the feature branch
+# -rebase their branch with the homepage branch
+# git rebase homepage branch

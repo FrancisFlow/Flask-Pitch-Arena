@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+
+    <title> {{ title }} </title>
+    {% else %}
+    <title>Pitch</title>
+
+    {% endif %}
+
+    {% block styles%}
+    {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}?20181212">
+{% endblock %}
+</head>
+<body>
+
+
+
+    {% block content %}
+    <a href="{{url_for('auth.register')}}">  <button type="button" style="width: 110px; height:40px; font-size:20px; color: gainsboro; background-color: blueviolet; margin-right: 20px; border-radius: 10px; font-weight: bolder; font-family: Arial, Helvetica, sans-serif;"  >Sign Up</button></a>
+    <a href="{{url_for('auth.login')}}">  <button type="button" style="width: 110px; height:40px; font-size:20px; color: gainsboro; background-color: blueviolet; margin-right: 20px; border-radius: 10px; font-weight: bolder; font-family: Arial, Helvetica, sans-serif;"  >Sign In</button></a>
+
+
+
+    <h1>
+        Welcome to Pitch Arena, the home of one minute pitches
+    </h1>
+
+    <hr>
+    <h2> Categories </h2>
+    
+    <div class="card" >
+        <div  class="card-body">
+            <div class = 'col-md-4'>
+                <h3 class="card-title">Business Pitches
+
+                </h3>
+                <p class="card-text">
+                 A business is not simply a tool that earns revenue but rather an endeavor that creates meaningful value and service to the community.
+        
+                </p>
+                <p>
+                    Uploaded By: Albert Brut
+                </p>
+
+
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="card-title" > Pick up line</h3>
+
+                <p class="card-text"> Are you from Tenessee? Coz your the only 10 I see.
+                </p>
+
+                <p class="card-text" > Uploaded By: Mad Max</p>
+            </div>
+
+            <div class = "col-md-4">
+                <h3 class="card-title"> Sales Pitch</h3>
+                 <p class="card-text" >
+                     The lawn mower 3000 is a beast tailored to serve you. 
+                 </p>
+
+                <p class="card-text" >
+                    Uploaded By: Steve Wonder
+                </p>
+            </div>
+
+        </div> 
+     </div>
+
+
+     <div>
+         <h3></h3>
+     </div>
+
+    
+
+
+    {% endblock  %}    
+</body>
+</html>
