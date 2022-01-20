@@ -1,0 +1,40 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
+
+
+<head>
+
+</head>
+{% block content %}
+
+<h3>
+    BUSINESS PITCHES
+</h3>
+<div>
+    {{ macro.display(Business) }}
+
+</div>
+
+<h3> PICK UP LINES </h3>
+
+<div>
+
+    {{ macro.display(Pick_up_lines) }}
+
+</div>
+
+
+<h3> SELF PITCH </h3>
+
+<div>
+    {{ macro.display(Self_Pitch) }}
+</div>
+
+<h3>SALES PITCH </h3>
+
+<div>
+    {{ macro.display(Sales_Pitch) }}
+
+</div>
+
+{% endblock %}
