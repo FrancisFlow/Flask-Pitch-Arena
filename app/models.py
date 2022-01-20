@@ -68,6 +68,8 @@ class Comment(db.Model):
 class User(UserMixin, db.Model):
 
     __tablename__ = 'users'
+
+
     id = db.Column(db.Integer, primary_key =True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -80,17 +82,16 @@ class User(UserMixin, db.Model):
     downvotes = db.relationship('Downvote', backref = 'users', lazy = 'dynamic')
 
     @property
-
     def password(self):
         raise AttributeError('You cannot read the password attribute') 
-    @password.setter
 
+
+    @password.setter
     def password(self, password):
         self.password_encrypt = generate_password_hash(password)
      
-    def check_password(self, password):
+    def verify_password(self, password):
          return check_password_hash(self.password_encrypt, password )
-    
     
     def __repr__(self):
         return f'User{self.username}'
