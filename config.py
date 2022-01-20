@@ -2,12 +2,13 @@ import os
 
 from instance.config import SECRET_KEY
 class Config:
+    
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:Master@Work@localhost/pitcharena'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:human2@localhost/pitcharena'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
-    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
     @staticmethod
@@ -16,14 +17,14 @@ class Config:
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:Master@Work.2@localhost/pitcharena'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:human2@localhost/pitcharena'
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:Master@Work.2@localhost/pitcharena'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:human2@localhost/pitcharena'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:Master@Work.2@localhost/pitcharena'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://francis:human2@localhost/pitcharena'
 
 
     DEBUG = True
